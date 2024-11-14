@@ -5,36 +5,23 @@ import {
   ArrowBigRightDash,
   ArrowBigLeftDash
 } from "lucide-react"
-// import { ThemeSwitcher } from "@/components/custom-switcher"
 
-
-import React, { useState, useEffect, useRef } from "react"
-import { useQuery } from "@tanstack/react-query"
-import { Outlet, RouterProvider } from "react-router-dom"
-import { getAllProductAPI } from "./api"
+import React from "react"
+import { Outlet } from "react-router-dom"
 
 
 function App() {
   const [open, setOpen] = React.useState(true)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const handleToggle = (mode) => { setIsDarkMode(mode) }
-  const triggerLabelRef = useRef(null)
-
-  const {data: products, isLoading} = useQuery ({
-    queryKey: ['products'],
-    queryFn: getAllProductAPI
-  })
 
 
   return (
     <SidebarProvider open={open} onOpenChange={setOpen} >
       <main className="dark bg-background w-screen h-screen flex text-foreground">
-        <AppSidebar   />
+        <AppSidebar />
         <aside className="size-full">
           {/* Header content */}
           <header className="w-full p-2 border-b-2 flex items-center gap-2">
-            <SidebarTrigger currentSate={open} labelIcon={open? ArrowBigLeftDash : ArrowBigRightDash} label={open ? 'Close' : 'Open'} className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground" />
-            {/* <ThemeSwitcher onToggle={handleToggle} /> */}
+            <SidebarTrigger currentSate={open} labelIcon={open ? ArrowBigLeftDash : ArrowBigRightDash} label={open ? 'Close' : 'Open'} className="bg-primary text-secondary-foreground hover:bg-secondary hover:text-white" />
           </header>
           {/* Main content */}
           <section className="p-4">

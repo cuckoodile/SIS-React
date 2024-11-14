@@ -27,10 +27,10 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
+import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons" 
 
 export function NavUser({
-  user
+  user, setState
 }) {
   const { isMobile } = useSidebar()
 
@@ -93,7 +93,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {setState(true)}}>
               <LogOut />
               Log out
             </DropdownMenuItem>
@@ -101,5 +101,6 @@ export function NavUser({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>)
+    
   );
 }

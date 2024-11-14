@@ -4,10 +4,10 @@ import App from './App.jsx'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import LogInPage from './pages/LogInPage/index.jsx'
 import HomeTab from './pages/TABS/Home.jsx'
 import AboutTab from './pages/TABS/About.jsx'
 import ContactTab from './pages/TABS/Contact.jsx'
+// import LogIn from './loginpage/login'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 const queryClient = new QueryClient();

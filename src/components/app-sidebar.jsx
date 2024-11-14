@@ -7,6 +7,7 @@ import {
   Home,
   NotebookText
 } from "lucide-react"
+import { Link } from "react-router-dom"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
@@ -25,6 +26,7 @@ import {
   SidebarFooter,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import MyCustomDialog from "./MyDialog"
 
 // This is sample data.
 const data = {
@@ -75,6 +77,9 @@ const data = {
 export function AppSidebar({
   ...props
 }) {
+
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false)
+
   return (
     (<Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -85,16 +90,34 @@ export function AppSidebar({
         {data.navMain.map((page) => (
           <SidebarMenuItem key={page.title}>
             <SidebarMenuButton asChild tooltip={page.title}>
-              <a href={page.url}>
+              <Link to={page.url}>
                 <page.icon />
                 <span>{page.title}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={data.user} setState={setIsDialogOpen} />
+        <MyCustomDialog data={{ title: "Add New Student", description: "Enter new student's data", enter: "Submit" }} open={isDialogOpen} setOpen={setIsDialogOpen}>
+          <section className="flex justify-between w-full gap-[1rem]">
+            <label htmlFor="">Full Name</label>
+            <input type="text" className="text-black" />
+          </section>
+          <section className="flex justify-between w-full gap-[1rem]">
+            <label htmlFor="">Grade</label>
+            <input type="text" className="text-black" />
+          </section>
+          <section className="flex justify-between w-full gap-[1rem]">
+            <label htmlFor="">Section</label>
+            <input type="text" className="text-black" />
+          </section>
+          <section className="flex justify-between w-full gap-[1rem]">
+            <label htmlFor="">Status</label>
+            <input type="text" className="text-black" />
+          </section>
+        </MyCustomDialog>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>)
