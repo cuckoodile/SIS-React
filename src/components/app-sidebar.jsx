@@ -99,25 +99,7 @@ export function AppSidebar({
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} setState={setIsDialogOpen} />
-        <MyCustomDialog data={{ title: "Add New Student", description: "Enter new student's data", enter: "Submit" }} open={isDialogOpen} setOpen={setIsDialogOpen}>
-          <section className="flex justify-between w-full gap-[1rem]">
-            <label htmlFor="">Full Name</label>
-            <input type="text" className="text-black" />
-          </section>
-          <section className="flex justify-between w-full gap-[1rem]">
-            <label htmlFor="">Grade</label>
-            <input type="text" className="text-black" />
-          </section>
-          <section className="flex justify-between w-full gap-[1rem]">
-            <label htmlFor="">Section</label>
-            <input type="text" className="text-black" />
-          </section>
-          <section className="flex justify-between w-full gap-[1rem]">
-            <label htmlFor="">Status</label>
-            <input type="text" className="text-black" />
-          </section>
-        </MyCustomDialog>
+        <NavUser user={data.user}/>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>)

@@ -27,12 +27,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons" 
+import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
+import { useNavigate } from "react-router-dom"
+
 
 export function NavUser({
-  user, setState
+  user
 }) {
   const { isMobile } = useSidebar()
+  const navigate = useNavigate()
 
   return (
     (<SidebarMenu>
@@ -93,14 +96,19 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => {setState(true)}}>
-              <LogOut />
-              Log out
+            <DropdownMenuItem>
+              <button className="flex gap-2" onClick={() => {
+                sessionStorage.clear()
+                navigate('/login')
+              }}>
+              <LogOut className="w-4"/>
+                Log out
+              </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>)
-    
+
   );
 }

@@ -1,8 +1,10 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { useState } from "react";
 
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
+  // const [open, setOpen] = useState(null)
   return (
     (<input
       type={type}

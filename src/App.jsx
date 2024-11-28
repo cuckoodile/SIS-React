@@ -6,17 +6,23 @@ import {
   ArrowBigLeftDash
 } from "lucide-react"
 
-import React from "react"
-import { Outlet } from "react-router-dom"
+import React, { useEffect } from "react"
+import { Outlet, useNavigate } from "react-router-dom"
+import { tokenVerifier } from "./api/authAPI"
 
 
 function App() {
   const [open, setOpen] = React.useState(true)
+  
+  const navigate = useNavigate()
 
+  // useEffect = (() => {
+  //   tokenVerifier(sessionStorage.getItem("accessToken"))
+  // }, [])
 
   return (
     <SidebarProvider open={open} onOpenChange={setOpen} >
-      <main className="dark bg-background w-screen h-screen flex text-foreground">
+      <main className="dark bg-background w-full h-full flex text-foreground">
         <AppSidebar />
         <aside className="size-full">
           {/* Header content */}

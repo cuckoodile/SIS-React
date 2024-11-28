@@ -7,13 +7,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomeTab from './pages/TABS/Home.jsx'
 import AboutTab from './pages/TABS/About.jsx'
 import ContactTab from './pages/TABS/Contact.jsx'
+import Login from './pages/TABS/Login.jsx'
 // import LogIn from './loginpage/login'
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   [
+    {
+      path: "/login",
+      element: <Login />,
+    },
     {
       path: "/",
       element: <App />,
@@ -31,7 +36,7 @@ const router = createBrowserRouter(
           element: <ContactTab />
         },
       ],
-    }
+    },
   ]
 )
 
